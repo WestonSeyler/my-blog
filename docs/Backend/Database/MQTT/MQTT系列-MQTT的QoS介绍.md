@@ -1,6 +1,8 @@
 ## 1. MQTT中的QoS等级
 
-MQTT设计了一套保证消息稳定传输的机制，包括消息应答、存储和重传。在这套机制下，提供了三种不同层次QoS（Quality of Service）：
+MQTT设计了一套保证消息稳定传输的机制，包括消息应答、存储和重传。
+为了保证消息被正确的接收
+在这套机制下，提供了三种不同层次QoS（Quality of Service）：
 
 * QoS0，At most once，至多一次；
 * QoS1，At least once，至少一次；
@@ -13,7 +15,10 @@ QoS 是消息的发送方（Sender）和接受方（Receiver）之间达成的�
 * QoS2 代表，Sender 发送的一条消息，Receiver 确保能收到而且只收到一次，也就是说 Sender 尽力向 Receiver 发送消息，如果发送失败，会继续重试，直到 Receiver 收到消息为止，同时保证 Receiver 不会因为消息重传而收到重复的消息。
 
 ::: warning
-QoS是Sender和Receiver之间的协议，而不是Publisher和Subscriber之间的协议。换句话说，Publisher发布了一条QoS1的消息，只能保证Broker能至少收到一次这个消息；而对于Subscriber能否至少收到一次这个消息，还要取决于Subscriber在Subscibe的时候和Broker协商的QoS等级。
+QoS是Sender和Receiver之间的协议，而不是Publisher和Subscriber之间的协议。
+换句话说，Publisher发布了一条QoS1的消息，只能保证Broker能至少收到一次这个消息；
+
+而对于Subscriber能否至少收到一次这个消息，还要取决于Subscriber在Subscribe的时候和Broker协商的QoS等级。
 :::
 
 #### 1.1. QoS0
@@ -74,7 +79,8 @@ QoS1要保证消息至少到达一次，所以有一个应答的机制。Sender�
 
 * 针对情况4，更加完善的处理如下：
 
-Receiver收到PUBREL数据包后，正式将消息递交给上层应用层，投递之后销毁Packet Identifier P，并发送PUBCOMP数据包，销毁之前的持久化消息。之后不管接收到多少个PUBREL数据包，因为没有Packet Identifier P，直接回复PUBCOMP数据包即可。
+Receiver收到PUBREL数据包后，正式将消息递交给上层应用层，投递之后销毁Packet Identifier P，并发送PUBCOMP数据包，销毁之前的持久化消息。
+之后不管接收到多少个PUBREL数据包，因为没有Packet Identifier P，直接回复PUBCOMP数据包即可。
 
 ## 2. QoS降级
 在 MQTT 协议中，从 Broker 到 Subscriber 这段消息传递的实际 QoS 等于：Publisher 发布消息时指定的 QoS 等级和 Subscriber 在订阅时与 Broker 协商的 QoS 等级，这两个 QoS 等级中的最小那一个。
@@ -85,7 +91,8 @@ Receiver收到PUBREL数据包后，正式将消息递交给上层应用层，投
 
 如果 Client 想接收离线消息，必须使用持久化的会话（Clean Session = 0）连接到 Broker，这样 Broker 才会存储 Client 在离线期间没有确认接收的 QoS 大于 等于1 的消息。
 
-> 在发送QoS为1或2的情况，Broker（此时为Sender）会将发送的PUBLISH数据包保存到本地，直到收到一系列回复的数据包，然而Client（此时为Receiver）在离线期间无法回复相应的数据包，所以会一直存储。
+> 在发送QoS为1或2的情况，Broker（此时为Sender）会将发送的PUBLISH数据包保存到本地，直到收到一系列回复的数据包，
+>然而Client（此时为Receiver）在离线期间无法回复相应的数据包，所以会一直存储。
 
 ## 4. QoS等级使用建议
 

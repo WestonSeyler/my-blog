@@ -1,11 +1,13 @@
-MQTT 的全称为 Message Queue Telemetry Transport（消息队列遥测传输协议），是在 1999 年，由 IBM 的 Andy Stanford-Clark 和 Arcom 的 Arlen Nipper 为了一个通过卫星网络连接输油管道的项目开发的。为了满足低电量消耗和低网络带宽的需求，MQTT 协议在设计之初就包含了以下一些特点：
+MQTT 的全称为 Message Queue Telemetry Transport（消息队列遥测传输协议）是在 1999 年由 IBM 的 Andy Stanford-Clark 和 Arcom 的 Arlen Nipper 为了一个通过卫星网络连接输油管道的项目开发的。为了满足低电量消耗和低网络带宽的需求，MQTT 协议在设计之初就包含了以下一些特点：
 
-实现简单
-提供数据传输的 QoS
-轻量、占用带宽低
-可传输任意类型的数据
-可保持的会话（session）
-之后 IBM 一直将 MQTT 作为一个内部协议在其产品中使用，直到 2010 年，IBM 公开发布了 MQTT 3.1 版本。在 2014 年，MQTT 协议正式成为了 OASIS（结构化信息标准促进组织）的标准协议。简单地来说MQTT协议具有以下特性：
+* 实现简单
+* 提供数据传输的 QoS
+* 轻量、占用带宽低
+* 可传输任意类型的数据
+* 可保持的会话（session）
+
+之后 IBM 一直将 MQTT 作为一个内部协议在其产品中使用，直到 2010 年，IBM 公开发布了 MQTT 3.1 版本。
+在 2014 年，MQTT 协议正式成为了 OASIS（结构化信息标准促进组织）的标准协议。简单地来说MQTT协议具有以下特性：
 
 基于 TCP 协议的应用层协议；
 * 采用 C/S 架构；
@@ -41,16 +43,29 @@ MQTT通过订阅与发布模型对消息的发布方和订阅方进行解耦后�
 * 另一组是发送方Sender和接收方Receiver
 
 ### 1.1. Publisher和Subscriber
-publisher和subscriber是相对于Topic来说的身份，如果一个Client向某个Topic发布消息，那么这个Client就是publisher；如果一个Client订阅了某个Topic，那么它就是Subscriber。
+publisher和subscriber是相对于Topic来说的身份，如果一个Client向某个Topic发布消息，那么这个Client就是publisher；
+如果一个Client订阅了某个Topic，那么它就是Subscriber。
 
 ### 1.2. Sender和Receiver
-Sender和Receiver则是相对于消息传输方向的身份。当publisher向Broker发送消息时，那么此时publisher是sender，Broker是receiver；当Broker转发消息给subscriber时，此时Broker是sender，subscriber是receiver。
+Sender和Receiver则是相对于消息传输方向的身份。当publisher向Broker发送消息时，那么此时publisher是sender，Broker是receiver；
+当Broker转发消息给subscriber时，此时Broker是sender，subscriber是receiver。
 
 ## 2. MQTT Client
-Publisher 和 Subscriber 都属于 Client，Publisher 或者 Subscriber 只取决于该 Client 当前的状态——是在发布消息还是在订阅消息。当然，一个 Client 可以同时是 Publisher 和 Subscriber。client的范围很广，任何终端、嵌入式设备、服务器只要运行了MQTT的库或者代码，都可以称为MQTT Client。MQTT Client库很多语言都有实现，可以在这个网址中找到：[MQTT Client库大全](https://github.com/mqtt/mqtt.org/wiki/libraries)
+Publisher 和 Subscriber 都属于 Client，Publisher 或者 Subscriber 只取决于该 Client 当前的状态——是在发布消息还是在订阅消息。
+当然，一个 Client 可以同时是 Publisher 和 Subscriber。
+client的范围很广，任何终端、嵌入式设备、服务器只要运行了MQTT的库或者代码，都可以称为MQTT Client。
+MQTT Client库很多语言都有实现，可以在这个网址中找到：[MQTT Client库大全](https://github.com/mqtt/mqtt.org/wiki/libraries)
 
 ## 3. MQTT Broker
-MQTT Broker负责接收Publisher的消息，并发送给相应的Subscriber，是整个MQTT 订阅/发布的核心。现在很多云服务器提供商都有提供MQTT 服务，比如阿里云、腾讯云等。当然我们自己也可以搭建一个MQTT Broker，个人倾向于使用 mosquitto来搭建自己的MQTT Broker。mosquitto官方网址
+MQTT Broker负责接收Publisher的消息，并发送给相应的Subscriber，是整个MQTT 订阅/发布的核心。
+现在很多云服务器提供商都有提供MQTT 服务，比如阿里云、腾讯云等。
+当然我们自己也可以搭建一个MQTT Broker
+
+::: tip
+常见的MQTT Broker有[Eclipse Mosquitto](https://mosquitto.org/) , [EMQ X Broker](https://www.emqx.cn/products/broker)和 HiveMQ等
+个人推荐EMQ X Broker，国人开发，开源，自带一个web管理界面，非常方便。
+更多客户端和服务端参见：https://github.com/mqtt/mqtt.org/wiki/libraries
+:::
 
 ## 4. MQTT协议数据包
 MQTT 协议数据包的消息格式为：固定头|可变头|消息体
@@ -76,7 +91,6 @@ MQTT 协议数据包的消息格式为：固定头|可变头|消息体
 
 ### 4.3. 消息体
 当MQTT发送的消息类型是CONNECT（连接）、PUBLISH（发布）、SUBSCRIBE（订阅）、SUBACK（订阅确认）、UNSUBSCRIBE（取消订阅）时，则会带有负荷。
-
 
 ## 参考
 
