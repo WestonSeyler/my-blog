@@ -23,7 +23,12 @@
 [文档](https://docs.emqx.cn/broker/v4.3/advanced/retained.html#%E7%AE%80%E4%BB%8B)
 
 #### 删除一条保留消息
-还有一种很简单的方法来删除某个主题的保留消息：只需要发送一个零字节的保留消息到你想清空消息的主题。broker将会删除保留消息，并且订阅者也不会再收到保留消息，因为每个新的保留消息都会覆盖上一个。
+保留消息虽然存储在服务端中，但它并不属于会话的一部分。也就是说，即便发布这个保留消息的会话终结，保留消息也不会被删除。
+
+删除保留消息只有两种方式：
+
+前文已经提到过的，客户端往某个主题发送一个 Payload 为空的保留消息，服务端就会删除这个主题下的保留消息。
+消息过期间隔属性在保留消息中同样适用，如果客户端设置了这一属性，那么保留消息在服务端存储超过过期时间后就会被删除。
 
 
 ## 参考
@@ -31,6 +36,8 @@
 https://www.jianshu.com/p/701ef52c62fd
 
 https://www.emqx.cn/blog/message-retention-and-message-expiration-interval-of-emqx-mqtt5-broker
+
+https://www.emqx.cn/blog/mqtt5-features-retain-message
 
 https://www.hivemq.com/blog/mqtt-essentials-part-8-retained-messages/
 
