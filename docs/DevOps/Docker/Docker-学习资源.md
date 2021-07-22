@@ -9,6 +9,8 @@
 
 [Awesome系列](https://github.com/veggiemonk/awesome-docker)
 
+[awesome-compose](https://github.com/docker/awesome-compose)) 收集的一些常见的语言框架的docker-compose示例
+
 [Docker Cheat Sheet Docker速查表](https://github.com/wsargent/docker-cheat-sheet/blob/master/zh-cn/README.md)
 
 ## Docker开源公共镜像提供商
@@ -18,3 +20,5 @@
 
 第二个是 [CircleCI images](https://github.com/circleci/circleci-images)
 CircleCI 本身提供的是CI/CD服务。针对不同语言和工具，自己维护了一些常用的[镜像](https://circleci.com/docs/2.0/circleci-images/)。而且所有镜像都预装了常用工具，如git, gzip, unzip, sudo, wget, zip 等。
+
+

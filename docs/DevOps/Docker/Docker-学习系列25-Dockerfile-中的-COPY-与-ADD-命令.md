@@ -6,18 +6,24 @@ Dockerfile 中提供了两个非常相似的命令 COPY 和 ADD，本文尝试�
 
 在使用 docker build 命令通过 Dockerfile 创建镜像时，会产生一个 build 上下文(context)。所谓的 build 上下文就是 docker build 命令的 PATH 或 URL 指定的路径中的文件的集合。在镜像 build 过程中可以引用上下文中的任何文件，比如我们要介绍的 COPY 和 ADD 命令，就可以引用上下文中的文件。
 
-默认情况下 docker build -t testx . 命令中的 . 表示 build 上下文为当前目录。当然我们可以指定一个目录作为上下文，比如下面的命令：
+默认情况下 `docker build -t testx .` 命令中的 . 表示 build 上下文为当前目录。
+当然我们可以指定一个目录作为上下文，比如下面的命令：
 `docker build -t testx /home/nick/hc`
-我们指定 /home/nick/hc 目录为 build 上下文，默认情况下 docker 会使用在上下文的根目录下找到的 Dockerfile 文件。
+我们指定 `/home/nick/hc` 目录为 build 上下文，默认情况下 docker 会使用在上下文的根目录下找到的 Dockerfile 文件。
 
 #### COPY 和 ADD 命令不能拷贝上下文之外的本地文件
-对于 COPY 和 ADD 命令来说，如果要把本地的文件拷贝到镜像中，那么本地的文件必须是在上下文目录中的文件。其实这一点很好解释，因为在执行 build 命令时，**docker 客户端会把上下文中的所有文件发送给 docker daemon**。考虑 docker 客户端和 docker daemon 不在同一台机器上的情况，build 命令只能从上下文中获取文件。如果我们在 Dockerfile 的 COPY 和 ADD 命令中引用了上下文中没有的文件，就会收到类似下面的错误：
+对于 COPY 和 ADD 命令来说，如果要把本地的文件拷贝到镜像中，那么本地的文件必须是在上下文目录中的文件。
+其实这一点很好解释，因为在执行 build 命令时，**docker 客户端会把上下文中的所有文件发送给 docker daemon**。
+考虑 docker 客户端和 docker daemon 不在同一台机器上的情况，build 命令只能从上下文中获取文件。
+如果我们在 Dockerfile 的 COPY 和 ADD 命令中引用了上下文中没有的文件，就会收到类似下面的错误：
 
 ![image](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-6aba0021b9d030a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
 
 **与 WORKDIR 协同工作**
 
-WORKDIR 命令为后续的 RUN、CMD、COPY、ADD 等命令配置工作目录。在设置了 WORKDIR 命令后，接下来的 COPY 和 ADD 命令中的相对路径就是相对于 WORKDIR 指定的路径。比如我们在 Dockerfile 中添加下面的命令：
+WORKDIR 命令为后续的 RUN、CMD、COPY、ADD 等命令配置工作目录。
+在设置了 WORKDIR 命令后，接下来的 COPY 和 ADD 命令中的相对路径就是相对于 WORKDIR 指定的路径。
+比如我们在 Dockerfile 中添加下面的命令：
 
 ```
 WORKDIR /app
@@ -103,7 +109,8 @@ ADD nickdir.tar.gz .
 这应该是 ADD 命令的最佳使用场景了！
 
 **从 url 拷贝文件到镜像中**
-这是一个更加酷炫的用法！但是在 docker [官方文档的最佳实践](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy)中却强烈建议不要这么用！！docker 官方建议我们当需要从远程复制文件时，最好使用 curl 或 wget 命令来代替 ADD 命令。原因是，当使用 ADD 命令时，会创建更多的镜像层，当然镜像的 size 也会更大(下面的两段代码来自 docker 官方文档)：
+这是一个更加酷炫的用法！但是在 docker [官方文档的最佳实践](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy)中却强烈建议不要这么用！！docker 官方建议我们当需要从远程复制文件时，最好使用 curl 或 wget 命令来代替 ADD 命令。
+原因是，当使用 ADD 命令时，会创建更多的镜像层，当然镜像的 size 也会更大(下面的两段代码来自 docker 官方文档)：
 
 ```
 ADD http://example.com/big.tar.xz /usr/src/things/
@@ -124,7 +131,9 @@ RUN mkdir -p /usr/src/things \
 
 ## 加速镜像构建的技巧
 
-在使用 COPY 和 ADD 命令时，我们可以通过一些技巧来加速镜像的 build 过程。比如把那些最不容易发生变化的文件的拷贝操作放在较低的镜像层中，这样在重新 build 镜像时就会使用前面 build 产生的缓存。比如笔者构建镜像时需要用到下面几个文件：
+在使用 COPY 和 ADD 命令时，我们可以通过一些技巧来加速镜像的 build 过程。
+比如把那些最不容易发生变化的文件的拷贝操作放在较低的镜像层中，这样在重新 build 镜像时就会使用前面 build 产生的缓存。
+比如笔者构建镜像时需要用到下面几个文件：
 
 ![image](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-20e515aa95ee1c15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
 
@@ -140,7 +149,9 @@ COPY check* ./
 
 ![image](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-20541f2f2e147ba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) 
 
-如上图所示，第二步和第三步都没有重新 build 镜像层，而是使用了之前的缓存，从第四步才开始重新 build 了镜像层。当文件 size 比较大且文件的数量又比较多，尤其是需要执行安装等操作时，这样的设计对于 build 速度的提升还是很明显的。所以我们应该尽量选择能够使用缓存的 Dockerfile 写法。
+如上图所示，第二步和第三步都没有重新 build 镜像层，而是使用了之前的缓存，从第四步才开始重新 build 了镜像层。
+当文件 size 比较大且文件的数量又比较多，尤其是需要执行安装等操作时，这样的设计对于 build 速度的提升还是很明显的。
+所以我们应该尽量选择能够使用缓存的 Dockerfile 写法。
 
 > 当第一次看到 COPY 和 ADD 命令时不免让人感到疑惑。但分析之后大家会发现 COPY 命令是为最基本的用法设计的，概念清晰，操作简单。而 ADD 命令基本上是 COPY 命令的超集(除了 multistage 场景)，可以实现一些方便、酷炫的拷贝操作。ADD 命令在增加了功能的同时也增加了使用它的复杂度，比如从 url 拷贝压缩文件时弊大于利。希望本文能够解去大家对 Dockerfile 中 COPY 和 ADD 命令的疑惑。
 

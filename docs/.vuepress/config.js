@@ -153,6 +153,7 @@ module.exports = {
                 ['Docker-学习系列26-hub-tool', '26-hub-tool工具介绍'],
                 ['Docker-学习系列27-Docker-in-Docker', '27-Docker-in-Docker'],
                 ['Docker-学习资源', 'Docker学习资源'],
+                ['Docker-常见问题', 'Docker常见问题'],
             ],
 
             '/DevOps/Ansible/': [
