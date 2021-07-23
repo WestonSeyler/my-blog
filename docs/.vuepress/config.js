@@ -11,6 +11,18 @@ module.exports = {
                 },
             },
         ],
+        [
+            'vuepress-plugin-comment',
+            {
+                choosen: 'valine',
+                // options选项中的所有参数，会传给Valine的配置
+                options: {
+                    el: '#valine-vuepress-comment',
+                    appId: 'pT5Dm6XHXWS6FjSEPyaRTJWk-gzGzoHsz',
+                    appKey: 'q79hf9yQSynaxYNMmR0IY9JY'
+                }
+            }
+        ]
     ],
     title: 'mafeifan 的技术博客',
     description: '生命在于试错和积累',
