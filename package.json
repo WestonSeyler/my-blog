@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.8.2",
-    "@vuepress/plugin-medium-zoom": "^1.7.1",
-    "vuepress": "^0.14.11"
+    "@vuepress/plugin-medium-zoom": "^1.8.2",
+    "@vuepress/plugin-nprogress": "^1.8.2"
   },
   "dependencies": {
-    "vuepress-plugin-comment": "^0.7.3",
-    "vuepress-plugin-zooming": "^1.1.8"
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "valine": "^1.4.14",
+    "vuepress": "^1.8.2"
   }
 }

@@ -1,6 +1,6 @@
 module.exports = {
-  // https://v1.vuepress.vuejs.org/zh/plugin/official/plugin-medium-zoom.html#
   plugins: {
+    // https://vuepress-theme-hope.github.io/
     'vuepress-plugin-comment': {
       choosen: 'valine',
       // options选项中的所有参数，会传给Valine的配置
@@ -11,8 +11,9 @@ module.exports = {
         path: '<%- frontmatter.commentid || frontmatter.permalink %>'
       }
     },
+    '@vuepress/nprogress': {},
     '@vuepress/back-to-top': {},
-    'vuepress-plugin-zooming': {
+    '@vuepress/medium-zoom': {
       delay: 500,
       options: {
         bgColor: 'black',
