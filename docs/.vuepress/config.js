@@ -1,15 +1,10 @@
 module.exports = {
   plugins: {
     // https://vuepress-theme-hope.github.io/
-    'vuepress-plugin-comment': {
-      choosen: 'valine',
-      // options选项中的所有参数，会传给Valine的配置
-      options: {
-        el: '#valine-vuepress-comment',
-        appId: 'pT5Dm6XHXWS6FjSEPyaRTJWk-gzGzoHsz',
-        appKey: 'q79hf9yQSynaxYNMmR0IY9JY',
-        path: '<%- frontmatter.commentid || frontmatter.permalink %>'
-      }
+    '@mr-hope/comment': {
+      type: "valine",
+      appId: 'pT5Dm6XHXWS6FjSEPyaRTJWk-gzGzoHsz',
+      appKey: 'q79hf9yQSynaxYNMmR0IY9JY',
     },
     '@vuepress/nprogress': {},
     '@vuepress/back-to-top': {},
