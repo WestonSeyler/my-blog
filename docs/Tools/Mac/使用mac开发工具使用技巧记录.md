@@ -1,3 +1,17 @@
+2021.07.30
+
+新Mac买来了，如何配置软件安装配置流程
+https://www.swyx.io/new-mac-setup-2021/
+
+学习了几个思路：
+1. ~/.zshrc 放到 github gist
+2. 几个小工具
+
+磁盘文件分析 http://www.derlien.com/
+![](https://pek3b.qingstor.com/hexo-blog/hexo-blog/20210730101650.png)
+窗口管理 https://github.com/rxhanson/Rectangle
+Video Speed Controller https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en
+
 推荐这篇[文章](https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html)
 只说几个爽的地方:
 
