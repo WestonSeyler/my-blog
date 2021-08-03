@@ -283,8 +283,17 @@ module.exports = {
       '/Backend/Database/MQTT/': [
         ['MQTT系列-MQTT基础概念', 'MQTT基础概念'],
         ['MQTT系列-MQTT的QoS介绍', 'MQTT的QoS介绍'],
+        ['MQTT系列-遗嘱消息', 'MQTT的遗嘱消息(Will Message)'],
         ['MQTT系列-代码示例', '代码示例'],
-        ['MQTT系列-遗嘱消息', '遗嘱消息（Will Message）'],
+        ['MQTT5.0介绍', 'MQTT5.0介绍'],
+        ['MQTT5.0新特性-Clean Start 与 Session Expiry Interval', 'MQTT5.0新特性-Clean Start 与 Session Expiry Interval'],
+        ['MQTT5.0新特性-Inflight Window & Message Queue', 'MQTT5.0新特性-Inflight Window & Message Queue'],
+        ['MQTT5.0新特性-共享订阅', 'MQTT5.0新特性-共享订阅'],
+        ['MQTT5.0新特性-增强认证', 'MQTT5.0新特性-增强认证'],
+        ['MQTT5.0新特性-属性与载荷', 'MQTT5.0新特性-属性与载荷'],
+        ['MQTT5.0新特性-流量控制', 'MQTT5.0新特性-流量控制码示例'],
+        ['MQTT5.0新特性-订阅标识符与订阅选项', 'MQTT5.0新特性-订阅标识符与订阅选项'],
+        ['MQTT5.0新特性-请求响应', 'MQTT5.0新特性-请求响应'],
       ],
 
       // '/Backend/MQ/': [
@@ -300,6 +309,7 @@ module.exports = {
         ['/DevOps/Docker/', 'Docker系列'],
         ['/Frontend/HTML5/', 'HTML5&CSS3'],
         ['/Backend/Laravel/', 'Laravel系列'],
+        ['/Backend/Database/MQTT/', 'MQTT系列'],
       ]
     }
   }
