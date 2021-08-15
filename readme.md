@@ -1,1 +1,2 @@
-### 插件不生效
+## 部署到k8s
+kubectl apply -f kubernates.yaml
