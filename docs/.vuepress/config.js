@@ -181,7 +181,8 @@ module.exports = {
         ['SSH--无密码登录', 'SSH--无密码登录'],
         ['SSH--技巧', 'SSH--技巧'],
         ['SSH--Gitlab中的使用', 'Gitlab配置CI/CD 使用ssh完成自动化部署'],
-        ["使用Let’s Encrypt生成免费通配https证书", "使用Let’s Encrypt生成免费通配https证书"]
+        ['SSH--Gitlab中的使用', 'Gitlab配置CI/CD 使用ssh完成自动化部署'],
+        ["前端项目打包总结", "前端项目打包总结"]
       ],
 
       '/Tools/Git/': [
