@@ -284,6 +284,7 @@ module.exports = {
         ['MQTT系列-MQTT基础概念', 'MQTT基础概念'],
         ['MQTT系列-MQTT的QoS介绍', 'MQTT的QoS介绍'],
         ['MQTT系列-遗嘱消息', 'MQTT的遗嘱消息(Will Message)'],
+        ['MQTT系列-保留消息', 'MQTT系列-保留消息'],
         ['MQTT系列-代码示例', '代码示例'],
         ['MQTT5.0介绍', 'MQTT5.0介绍'],
         ['MQTT5.0新特性-Clean Start 与 Session Expiry Interval', 'MQTT5.0新特性-Clean Start 与 Session Expiry Interval'],
