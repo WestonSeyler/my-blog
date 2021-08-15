@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
@@ -33,6 +33,17 @@ jobs:
 
     - name: Run build task
       run: npm run build --if-present
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag blog-vuepress:$(date +%s)
+
+    - name: publish docker image
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: finleyma/blog-vuepress
+        username: finleyma
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        tags: "latest"
 
     - name: Deploy to Server Cloud 2
       uses: easingthemes/ssh-deploy@v2.1.5
