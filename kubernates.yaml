@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-blog-vuepress
+  labels:
+    app: blog-vuepress
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: blog-vuepress
+  template:
+    metadata:
+      labels:
+        app: blog-vuepress
+    spec:
+      containers:
+        - name: blog-vuepress
+          image: finleyma/blog-vuepress:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-blog-vuepress
+spec:
+  type: LoadBalancer
+  selector:
+    app: blog-vuepress
+  ports:
+    # 默认情况下，为了方便起见，`targetPort` 被设置为与 `port` 字段相同的值。
+    - protocol: TCP
+      ## service暴露在cluster ip上的端口
+      port: 80
+      ## targetPort是pod上的端口
+      targetPort: 80
+
