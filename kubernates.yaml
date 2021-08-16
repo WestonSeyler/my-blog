@@ -17,6 +17,7 @@ spec:
       containers:
         - name: blog-vuepress
           image: finleyma/blog-vuepress:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---

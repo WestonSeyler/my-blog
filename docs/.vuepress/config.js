@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   title: 'mafeifan 的技术博客',
-  description: '生命在于试错和积累',
+  description: '点滴记录',
   port: '8099',
   markdown: {
     lineNumbers: true // 代码块显示行号
