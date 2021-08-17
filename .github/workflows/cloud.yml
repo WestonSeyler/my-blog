@@ -16,7 +16,7 @@ env:
   GKE_ZONE: asia-east1-a  # Add your cluster zone here.
   DEPLOYMENT_NAME: deployment-blog-vuepress # Add your deployment name here.
   IMAGE: finleyma/blog-vuepress
-  IMAGE_TAG: ${GITHUB_SHA}
+  IMAGE_TAG: $GITHUB_SHA
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
