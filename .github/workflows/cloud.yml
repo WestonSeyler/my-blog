@@ -16,7 +16,7 @@ env:
   GKE_ZONE: asia-east1-a  # Add your cluster zone here.
   DEPLOYMENT_NAME: deployment-blog-vuepress # Add your deployment name here.
   IMAGE: finleyma/blog-vuepress
-  IMAGE_TAG: "${GITHUB_SHA}"
+  IMAGE_TAG: ${GITHUB_SHA}
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -34,6 +34,19 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: "${{ env.NODE }}"
+
+    # calculate some variables that are used later
+    - name: github branch
+      run: |
+        BRANCH=${GITHUB_REF##*/}
+        if [ "$BRANCH" == "master" ]; then
+          TAGS="latest,$(date +'%Y%m%d')"
+        else
+          TAGS="$BRANCH"
+        fi
+        TAGS="${TAGS},${BRANCH}-${{ github.run_number }}"
+        echo "TAGS=${TAGS}" >> $GITHUB_ENV
+        echo "GITHUB_BRANCH=${BRANCH}" >> $GITHUB_ENV
 
     - name: Install npm dependencies
       run: npm ci
