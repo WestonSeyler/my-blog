@@ -55,7 +55,7 @@ jobs:
       run: npm run build --if-present
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile
+      run: docker build --file Dockerfile --tag "finleyma/blog-vuepress:$GITHUB_SHA" .
 
     - name: publish docker image to dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
@@ -63,7 +63,7 @@ jobs:
         name: ${{ env.IMAGE }}
         username: finleyma
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        tags: $GITHUB_SHA
+#        tags: $GITHUB_SHA
 
     - name: Deploy to Server Cloud 2
       uses: easingthemes/ssh-deploy@v2.1.5
