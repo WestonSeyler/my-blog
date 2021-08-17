@@ -65,16 +65,16 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 #        tags: $GITHUB_SHA
 
-    - name: Deploy to Server Cloud 2
-      uses: easingthemes/ssh-deploy@v2.1.5
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY2 }}
-        ARGS: "-rltgoDzvO --delete"
-        SOURCE: "docs/.vuepress/dist/"
-        REMOTE_PORT : ${{ secrets.PORT2 }}
-        REMOTE_HOST: ${{ secrets.HOST2 }}
-        REMOTE_USER: ${{ secrets.USERNAME }}
-        TARGET: "/home/ubuntu/blog"
+#    - name: Deploy to Server Cloud 2
+#      uses: easingthemes/ssh-deploy@v2.1.5
+#      env:
+#        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY2 }}
+#        ARGS: "-rltgoDzvO --delete"
+#        SOURCE: "docs/.vuepress/dist/"
+#        REMOTE_PORT : ${{ secrets.PORT2 }}
+#        REMOTE_HOST: ${{ secrets.HOST2 }}
+#        REMOTE_USER: ${{ secrets.USERNAME }}
+#        TARGET: "/home/ubuntu/blog"
 
       # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
@@ -98,10 +98,9 @@ jobs:
       #        ./kustomize build . | kubectl apply -f -
     - name: Deploy
       run: |-
-        kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} blog-vuepress=finleyma/blog-vuepress:$GITHUB_SHA --record
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
+#        kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} blog-vuepress=finleyma/blog-vuepress:$GITHUB_SHA --record
+#        kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
-
 
     # Runs a set of commands using the runners shell
 #    - name: SSH Remote Commands
@@ -113,3 +112,13 @@ jobs:
 #        port: ${{ secrets.PORT }}
 #        script: cd /var/www/vue-press && git pull && npm i && npm run build
 
+      # Slack Notification
+#    - name: Slack Notification
+#      uses: 8398a7/action-slack@v3
+#      with:
+#        status: ${{ job.status }}
+#        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+#      env:
+#        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
+#        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+#      if: always() # Pick up events even if the job fails or is canceled.
