@@ -44,7 +44,7 @@ jobs:
         else
           TAGS="$BRANCH"
         fi
-        TAGS="${TAGS},${BRANCH}-${{ github.run_number }}"
+        TAGS="${TAGS},${BRANCH}-${{ github.run_number }},${GITHUB_SHA:0:7}"
         echo "TAGS=${TAGS}" >> $GITHUB_ENV
         echo "GITHUB_BRANCH=${BRANCH}" >> $GITHUB_ENV
 
@@ -55,7 +55,7 @@ jobs:
       run: npm run build --if-present
 
     - name: Build the Docker image
-      run: docker build --file Dockerfile --tag "finleyma/blog-vuepress:$GITHUB_SHA" .
+      run: docker build --file Dockerfile" .
 
     - name: publish docker image to dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
@@ -94,8 +94,11 @@ jobs:
         credentials: ${{ secrets.GKE_SA_KEY }}
 
       # Deploy the Docker image to the GKE cluster
+      # kubectl set image deployment deployment-blog-vuepress blog-vuepress=finleyma/blog-vuepress:master-87 --record
       #        ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
       #        ./kustomize build . | kubectl apply -f -
     - name: Deploy
       run: |-
         kubectl get services -o wide
+        kubectl set image deployment deployment-blog-vuepress blog-vuepress=finleyma/blog-vuepress:${GITHUB_SHA:0:7} --record
+        kubectl rollout history deployment deployment-blog-vuepress
