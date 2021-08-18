@@ -55,7 +55,7 @@ jobs:
       run: npm run build --if-present
 
     - name: Build the Docker image
-      run: docker build --file Dockerfile" .
+      run: docker build --file Dockerfile .
 
     - name: publish docker image to dockerhub
       uses: elgohr/Publish-Docker-Github-Action@master
