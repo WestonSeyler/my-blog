@@ -102,3 +102,14 @@ jobs:
         kubectl get services -o wide
         kubectl set image deployment deployment-blog-vuepress blog-vuepress=finleyma/blog-vuepress:${GITHUB_SHA:0:7} --record
         kubectl rollout history deployment deployment-blog-vuepress
+
+      # Slack Notification
+    - name: Slack Notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+      env:
+        # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always() # Pick up events even if the job fails or is canceled.
