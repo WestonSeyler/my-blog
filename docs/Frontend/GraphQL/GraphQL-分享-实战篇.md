@@ -6,9 +6,8 @@
  GraphiQL is a great tool for debugging and inspecting a server, so we recommend running it whenever your application is in development mode.
 ![image.png](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-ae8bf77deba55f92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
 index.js
-```
+```javascript
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema');
@@ -26,7 +25,7 @@ console.log("please open http://localhost:12580/graphql")
 
 schema.js
 
-```
+```javascript
 const {
   GraphQLObjectType,
   GraphQLSchema,
@@ -120,7 +119,7 @@ GraphQL内置两个核心指令，`@skip` 和 `@include`
 你会发现所有已Connection结尾的类型，其结果都包含pageInfo, edges, nodes
 
 输入下面的内容，这个查询是返回包含"graphql"关键字的前三个仓库，并显示每个仓库的前3个issues的作者，头像信息。
-```
+```javascript 1.8
 {
   search(first: 3, query: "graphql", type: REPOSITORY) {
     codeCount
@@ -163,7 +162,7 @@ GraphQL内置两个核心指令，`@skip` 和 `@include`
 
 ```
 返回的结果类似
-```
+```json
 {
   "data": {
     "search": {

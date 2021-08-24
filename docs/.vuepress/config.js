@@ -54,6 +54,8 @@ module.exports = {
           {text: 'Html & CSS', link: '/Frontend/HTML5/'},
           {text: 'JavaScript', link: '/Frontend/JavaScript/'},
           {text: 'Angular', link: '/Frontend/Angular/'},
+          {text: 'GraphQL', link: '/Frontend/GraphQL/GraphQL-分享-理论篇'},
+          {text: 'RxJS6', link: '/Frontend/RxJS-6/RxJS-学习系列-1--认识-RxJS'},
           // {text: 'React', link: '/React/'}
         ]
       },
@@ -214,6 +216,34 @@ module.exports = {
         ['关于JS中的循环', '关于JS中的循环'],
         ['JavaScript中的事件相关', 'JavaScript中的事件相关'],
         ['JS-面试总结-理论篇', 'JS-面试总结-理论篇']
+      ],
+
+      '/Frontend/GraphQL/': [
+        ['GraphQL-分享-理论篇', 'GraphQL-分享-理论篇'],
+        ['GraphQL-分享-实战篇', 'GraphQL-分享-实战篇'],
+      ],
+
+      '/Frontend/RxJS-6/': [
+        ['RxJS-学习系列-1--认识-RxJS', '1--认识-RxJS'],
+        ['RxJS-学习系列-2--函数式编程', '2--函数式编程'],
+        ['RxJS-学习系列-3--认识观察者模式和迭代器模式', '3--认识观察者模式和迭代器模式'],
+        ['RxJS-学习系列-4--RxJS-介绍及注意事项', '4--RxJS-介绍及注意事项'],
+        ['RxJS-学习系列-5--创建-Observable', '5--创建-Observable'],
+        ['RxJS-学习系列-6--Observable-和-数组的区别', '6--Observable-和-数组的区别'],
+        ['RxJS-学习系列-7--创建操作符-from,-of,-range,-interval,-timer,-empty', '7--创建操作符'],
+        ['RxJS-学习系列-8--过滤操作符-startWith,filter,-last,-first,-skip,-take', '8--过滤操作符3-1'],
+        ['RxJS-学习系列-9--过滤操作符-takeUntil，takeWhile，skipUntil，skipWhile', '9--过滤操作符3-2'],
+        ['RxJS-学习系列-10--过滤操作符-debounce，debounceTime，throttle，throttleTime', '10--过滤操作符3-3'],
+        ['RxJS-学习系列-11--合并操作符-concat,-merge,-concatAll', '11--合并操作符3-1'],
+        ['RxJS-学习系列-12--合并操作符-concatAll,-mergeAll,-switchAll', '12--合并操作符3-2'],
+        ['RxJS-学习系列-13--合并打平操作符-switchMap,-mergeMap,-concatMap', '12--合并操作符3-3'],
+        ['RxJS-学习系列-14--Subject-基本概念', '14--Subject基本概念'],
+        ['RxJS-学习系列-15--Subject-示例', '15--Subject示例'],
+        ['RxJS-学习系列-16---Subject-的变形,-BehaviorSubject,-ReplaySubject,-AsyncSubject', '16-Subject的变形'],
+        ['RxJS-学习系列-RxJS-5-到-6迁移指导', 'RxJS-5-到-6迁移指导'],
+        ['RxJS-学习系列-RxJS-在-Angular-中的使用', 'RxJS在Angular中的使用'],
+        ['RxJS-学习系列-使用-RxJS-要注意的问题', '使用RxJS要注意的问题'],
+        ['RxJS-学习系列-资料推荐', '资料推荐']
       ],
 
       '/Frontend/Angular/': [

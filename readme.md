@@ -3,3 +3,7 @@ kubectl apply -f kubernates.yaml
 
 ## 
 https://docs.github.com/en/actions/guides/deploying-to-google-kubernetes-engine
+
+
+## 
+34.81.120.89
