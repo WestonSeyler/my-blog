@@ -29,7 +29,7 @@ chrome浏览器是世界上最适合开发人员使用的浏览器的，没有�
 
 
 
-参考：
+## 参考：
 https://developers.google.com/web/updates/2018/08/devtools
 https://developers.google.com/web/updates/2018/10/devtools#bonus
 https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference

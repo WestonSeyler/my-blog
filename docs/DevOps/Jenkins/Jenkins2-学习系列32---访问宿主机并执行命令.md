@@ -22,7 +22,7 @@ docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 会看到docker0中的inet，172.17.0.1就是docker中的IP。
 如果进到Jenkins容器，直接ping这个地址是直接ping通的。
 
-但问题这个IP不一定是固定的，我们需要在启动Jenkins容器时将当前的宿主IP告诉容器。
+但问题是这个IP不一定是固定的，我们需要在启动Jenkins容器时将当前的宿主IP告诉容器。
 
 方法2：容器内执行`ip route show | awk '/default/ {print $3}'`
 
@@ -34,6 +34,7 @@ docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
 
 > 注：需要docker版本在20.04及以上
 
+我们更新docker-compose.yml
 ```
 extra_hosts:
 - "host.docker.internal:host-gateway"
@@ -44,7 +45,7 @@ extra_hosts:
 就会发现新增了一条`172.17.0.1	host.docker.internal`
 直接ping host.docker.internal可以连通
 
-如果
+如果docker-compose.yml
 ```
 extra_hosts:
  - "somehost:162.242.195.82"
@@ -62,10 +63,10 @@ extra_hosts:
 
 这个简单，我们需要进到容器内，只需要生成一对密钥。然后再将ssh目录映射出来
 
-容器名: jenkins_jenkins-compose_1
+假设有一正在运行的容器，名称为: jenkins_jenkins-compose
 
 登录宿主机，将容器内的ssh目录拷贝到宿主机中
-`docker cp jenkins_jenkins-compose_1:/root/.ssh ssh`
+`docker cp jenkins_jenkins-compose:/root/.ssh ssh`
 
 设置权限和所属
 ```

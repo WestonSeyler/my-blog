@@ -2,7 +2,7 @@
 需要申请Amazon账号，得开通信用卡，可免费使用一年
 然后开通S3服务，填写bucket名字，最后生成Access Key和Access Secret。
 ### 图形化工具：  
-Windows平台：
+* Windows平台：
 [http://s3browser.com/](http://s3browser.com/)
 
 连接 bucket
@@ -10,14 +10,17 @@ Windows平台：
 
 > ![image.png](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-419905c1b1ecbb78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+* mac平台
+
+推荐Transmit
 
 ### 命令行工具(awscli)：
 
-Windows平台：
+* Windows平台：
 
 [https://s3.amazonaws.com/aws-cli/AWSCLI64.msi](https://s3.amazonaws.com/aws-cli/AWSCLI64.msi)
 
-Mac平台：
+* Mac平台：
 
 参考：  [https://github.com/aws/aws-cli](https://github.com/aws/aws-cli)
 ```

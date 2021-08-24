@@ -198,6 +198,7 @@ module.exports = {
         ['storybook-介绍和使用-比较火的响应式UI开发及测试环境', 'storybook-介绍和使用-响应式UI开发及测试环境'],
         ['强大的Postman-----API管理工具', '强大的Postman--API管理工具'],
         ['说下browserslist', '说下browserslist'],
+        ['Amazon-S3-工具及使用', 'Amazon-S3-工具及使用'],
       ],
 
       '/Frontend/HTML5/': [
