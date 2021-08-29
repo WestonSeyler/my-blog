@@ -65,16 +65,16 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
         tags: ${{ env.TAGS }}
 
-#    - name: Deploy to Server Cloud 2
-#      uses: easingthemes/ssh-deploy@v2.1.5
-#      env:
-#        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY2 }}
-#        ARGS: "-rltgoDzvO --delete"
-#        SOURCE: "docs/.vuepress/dist/"
-#        REMOTE_PORT : ${{ secrets.PORT2 }}
-#        REMOTE_HOST: ${{ secrets.HOST2 }}
-#        REMOTE_USER: ${{ secrets.USERNAME }}
-#        TARGET: "/home/ubuntu/blog"
+    - name: Deploy to Server Cloud 2
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY2 }}
+        ARGS: "-rltgoDzvO --delete"
+        SOURCE: "docs/.vuepress/dist/"
+        REMOTE_PORT : ${{ secrets.PORT2 }}
+        REMOTE_HOST: ${{ secrets.HOST2 }}
+        REMOTE_USER: ${{ secrets.USERNAME }}
+        TARGET: "/home/ubuntu/blog"
 
       # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
