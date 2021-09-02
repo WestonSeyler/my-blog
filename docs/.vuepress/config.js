@@ -1,5 +1,9 @@
 module.exports = {
   plugins: {
+    // https://analytics.google.com/
+    '@vuepress/google-analytics': {
+      'ga': 'G-41D2WLZSSB' //替换成自己实际申请的ID
+    },
     // https://vuepress-theme-hope.github.io/
     '@mr-hope/comment': {
       type: "valine",
