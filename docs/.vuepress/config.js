@@ -163,6 +163,7 @@ module.exports = {
         ['Docker-学习系列26-hub-tool', '26-hub-tool工具介绍'],
         ['Docker-学习系列27-Docker-in-Docker', '27-Docker-in-Docker'],
         ['Docker-学习系列28-网络故障调试工具的瑞士军刀-netshoot', '28-网络故障调试工具的瑞士军刀-netshoot'],
+        ['Docker-学习系列29-使用 Docker Buildx 构建多种系统架构镜像', '29-使用 Docker Buildx 构建多种系统架构镜像'],
         ['Docker-学习资源', 'Docker学习资源'],
         ['Docker-常见问题', 'Docker常见问题'],
       ],
