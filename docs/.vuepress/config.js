@@ -88,8 +88,8 @@ module.exports = {
         link: '/_DEMO/'
       },
       {
-        text: 'Finance',
-        link: '/Finance/'
+        text: '友链',
+        link: '/Friend-links/'
       },
       {
         text: 'Home', link: '/'
@@ -201,6 +201,7 @@ module.exports = {
       ],
 
       '/Tools/Other/': [
+        ['Firebase消息推送', 'Firebase消息推送'],
         ['当有个服务器可以干哪些事情', '当有个服务器可以干哪些事情?'],
         ['使用frp内网穿透工具', '使用frp内网穿透工具'],
         ['storybook-介绍和使用-比较火的响应式UI开发及测试环境', 'storybook-介绍和使用-响应式UI开发及测试环境'],
