@@ -13,7 +13,7 @@ env:
   # google cloud kubernates cluser (GKE)
   PROJECT_ID: ivory-strategy-313903
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
-  GKE_ZONE: asia-east1-a  # Add your cluster zone here.
+  GKE_ZONE: asia-east2-c  # Add your cluster zone here.
   DEPLOYMENT_NAME: deployment-blog-vuepress # Add your deployment name here.
   IMAGE: finleyma/blog-vuepress
   IMAGE_TAG: $GITHUB_SHA
