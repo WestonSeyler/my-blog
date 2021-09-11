@@ -111,5 +111,6 @@ jobs:
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
       env:
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        # 获取频道地址 https://api.slack.com/apps/AA2A5EYBE/incoming-webhooks
+        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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 # required
       if: always() # Pick up events even if the job fails or is canceled.
