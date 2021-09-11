@@ -1,4 +1,4 @@
-Angular大量使用了JS的装饰器特性，先看[ ruanyifeng的介绍](http://es6.ruanyifeng.com/#docs/decorator)
+Angular大量使用了JS的装饰器特性，先看[ruanyifeng的介绍](http://es6.ruanyifeng.com/#docs/decorator)
 
 ES7 中的 decorator 同样借鉴了这个语法糖，不过依赖于 ES5 的 Object.defineProperty 方法 。
 
