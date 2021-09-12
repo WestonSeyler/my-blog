@@ -10,7 +10,7 @@ on:
 env:
   CI: true
   NODE: 14.x
-  # google cloud kubernates cluser (GKE)
+  # google cloud kubernates cluster (GKE)
   PROJECT_ID: ivory-strategy-313903
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: asia-east2-c  # Add your cluster zone here.
@@ -112,5 +112,5 @@ jobs:
       env:
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
         # 获取频道地址 https://api.slack.com/apps/AA2A5EYBE/incoming-webhooks
-        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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 # required
+        SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}} # required
       if: always() # Pick up events even if the job fails or is canceled.
