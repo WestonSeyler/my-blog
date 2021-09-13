@@ -54,12 +54,12 @@ location / {
 
 ```
 server {
-        listen 80;
-        index index.html index.htm index.nginx-debian.html;
-        server_name mqtt.demo.com;
-        location / {
-          proxy_pass  http://127.0.0.1:18083;
-        }
+    listen 80;
+    index index.html index.htm index.nginx-debian.html;
+    server_name mqtt.demo.com;
+    location / {
+      proxy_pass  http://127.0.0.1:18083;
+    }
 }
 ```
 
@@ -78,8 +78,6 @@ location / {
 #  所有的请求引导到index.php中
 try_files $uri $uri/   /index.php?$query_string  =404;
 ```
-
-
 
 ## @ 符号的使用
 
@@ -105,7 +103,6 @@ location @php {
 }
 ```
 
-
 ## 使用Nginx解决跨域问题
 
 当公司存在多个域名时，两个不同的域名相互访问就会存在跨域问题。
@@ -127,9 +124,6 @@ add_header 'Access-Control-Allow-Methods' *;
 add_header 'Access-Control-Allow-Headers' *;
 ```
 
-
-
-
 重新加载Nginx，便发现，已经可以跨域访问了。
 
 ## 验证头信息中的 referer 参数
@@ -141,27 +135,26 @@ add_header 'Access-Control-Allow-Headers' *;
 ```
 server {
     listen       80;   # 端口
-    server_name  www.zhuifengren.cn;  # 服务名，可以是IP地址或者域名
+    server_name  www.osvlabs.com;  # 服务名，可以是IP地址或者域名
 
     location / {   # 根路径
-　　　　　　root   html;  # 对应nginx安装目标下的html文件夹
+　　　　　root   html;  # 对应nginx安装目标下的html文件夹
         index  hello.html; # 指定首页为 hello.html
     }
 
     location ~* \.(GIF|PNG|jpg|bmp|jpeg) {  # *代表不区分大小写
-        # 校验请求是否来自于zhuifengren.cn这个站点，不是则返回404页面
-    　　valid_referers *.zhuifengren.cn;
+        # 校验请求是否来自于osvlabs.com这个站点，不是则返回404页面
+    　　valid_referers *.osvlabs.com;
     　　if ($invalid_referer) {
            return 404;
     　　}
-　　　　　  root /home/img;
+　　　　 root /home/img;
 　　}
 
-    error_page   500 502 503 504  /50x.html;  # 指定这些状态码跳转的错误页
+    error_page 500 502 503 504  /50x.html;  # 指定这些状态码跳转的错误页
     location = /50x.html {
         root   html;
     }
-
 }
 ```
 
@@ -173,18 +166,18 @@ Nginx最常用的一个功能，就是为Tomcat构建集群，以达到实现高
 
 ```
 # 配置Tomcat集群中的服务器
-upstream zhuifengren {
+upstream osvlabs {
     server 192.168.1.101:8080;
     server 192.168.1.102:8080;
     server 192.168.1.103:8080;
-
+}
 
 server {
     listen  80;
-    server_name     www.zhuifengren.cn;
+    server_name     www.osvlabs.com;
 
     location / {
-            proxy_pass      http://zhuifengren;
+        proxy_pass      http://osvlabs;
     }
 }
 ```
@@ -193,7 +186,7 @@ server {
 
 权重配置也是经常用的，适用于机器性能有差异的情况。
 ```
-upstream zhuifengren {
+upstream osvlabs {
 　　server 192.168.1.101:8080  weight=1;
 　　server 192.168.1.102:8080;
 　　server 192.168.1.103:8080  weight=3;
@@ -203,7 +196,7 @@ weight 就是权重配置，不配默认是1，按照以上配置，在5次请�
 
 使用down，可以标识某个服务已停用，Nginx便不会去访问他了。
 ```
-upstream zhuifengren {
+upstream osvlabs {
     server 192.168.1.101:8080;
     server 192.168.1.102:8080 down;
     server 192.168.1.103:8080;
@@ -212,7 +205,7 @@ upstream zhuifengren {
 
 使用backup，可以标识101是备用机，当102、103宕机后，101会进行服务。
 ```
-upstream zhuifengren {
+upstream osvlabs {
     server 192.168.1.101:8080 backup;
     server 192.168.1.102:8080;
     server 192.168.1.103:8080;
@@ -223,7 +216,7 @@ upstream zhuifengren {
 
 max_fails 默认是1，fail_timeout默认是10s
 ```
-upstream zhuifengren {
+upstream osvlabs {
     server 192.168.1.101:8080 max_fails=2 fail_timeout=10s;
     server 192.168.1.102:8080;
     server 192.168.1.103:8080;
@@ -235,7 +228,7 @@ upstream zhuifengren {
 ## 使用keepalive设置长链接数量，提高吞吐量
 
 ```
-upstream zhuifengren {
+upstream osvlabs {
     server 192.168.1.101:8080;
     server 192.168.1.102:8080;
     server 192.168.1.103:8080;
@@ -245,15 +238,14 @@ upstream zhuifengren {
 
  server {
     listen  80;
-    server_name     www.zhuifengren.cn;
+    server_name     www.osvlabs.com;
 
     location / {
-            proxy_pass      http://zhuifengren;
-            
-            proxy_http_version    1.1;
-            proxy_set_header    Connection "";
+        proxy_pass      http://osvlabs;
+        
+        proxy_http_version    1.1;
+        proxy_set_header    Connection "";
     }
-
 }
 ```
 
@@ -270,8 +262,7 @@ upstream zhuifengren {
 * least_conn：以服务器连接数为依据，哪个服务器连接数少，匹配哪台服务器
 
 ```
-upstream zhuifengren {
-
+upstream osvlabs {
     # ip_hash;
     # hash $request_uri;
     least_conn;
@@ -279,6 +270,5 @@ upstream zhuifengren {
     server 192.168.1.101:8080;
     server 192.168.1.102:8080;
     server 192.168.1.103:8080;
-
 }
 ```

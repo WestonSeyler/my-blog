@@ -213,3 +213,5 @@ be753fa16090        moby/buildkit:buildx-stable-1   "buildkitd"       15 minutes
 https://github.com/moby/buildkit
 
 https://teddysun.com/581.html
+
+https://kubesphereio.com/post/docker-image-operation-guide-for-building-arm-x86-architecture/

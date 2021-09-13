@@ -59,12 +59,11 @@ Upstream Committers | upstreamDevelopers() | 上游job变更提交者的列表
 Slack 号称邮件杀手，是一款国外很火的消息聚合平台服务，通过建立不同的频道降低团队沟通的干扰。
 
 1. Jenkins 安装 [Slack Notification Plugin]([https://plugins.jenkins.io/slack](https://plugins.jenkins.io/slack)
-)
 
 2. 打开[插件Github官网]([https://github.com/jenkinsci/slack-plugin](https://github.com/jenkinsci/slack-plugin)
-)，根据提示没有账号的话先申请账号
+根据提示没有账号的话先申请账号
 
-3. Slack 端集成Jenkin CI，需要选择一个要推送通知的频道
+3. Slack 端集成Jenkin CI，首先，网页端登录slack，进到自己的workspace，然后添加Jenkins应用，需要选择一个要推送通知的频道
 > ![image.png](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-a5ee5d7ea2cb6a3f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 4.  根据指引配置就可以了，非常人性，下图在FreeStyle类型的项目中可配
