@@ -29,7 +29,8 @@ arr2.push(4)
 记住：数组中的对象依然是引用值，所以不是任何东西都“拷贝”过去了。
 
 例3
-```
+
+```javascript
 let ab = { ...a, ...b };
 // 等同于
 let ab = Object.assign({}, a, b);
@@ -64,7 +65,7 @@ demo().then(res => console.log(1))
 
 那么当某一个key不存在时，undefined.key就会报错，通常我们会优化成下面的样子：
 
-`const price = (data&&data.result&&data.result.redPacket&&data.result.redPacket.price)||'default'`
+`const price = (data && data.result && data.result.redPacket && data.result.redPacket.price)||'default'`
 
 es6提供链判断运算符：
 

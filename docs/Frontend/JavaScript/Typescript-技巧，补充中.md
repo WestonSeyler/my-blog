@@ -13,7 +13,8 @@ foo.bar = 123; // Error: Property 'bar' does not exist on type '{}'
 foo.bas = 'Hello World'; // Error: Property 'bas' does not exist on type '{}'
 ```
 
-这是因为 TypeScript 在解析 `let foo = {}` 这段赋值语句时，会进行“类型推断”：它会认为等号左边 `foo` 的类型即为等号右边 `{}` 的类型。由于 `{}` 本没有任何属性，因此，像上面那样给 `foo` 添加属性时就会报错。
+这是因为 TypeScript 在解析 `let foo = {}` 这段赋值语句时，会进行“类型推断”：它会认为等号左边 `foo` 的类型即为等号右边 `{}` 的类型。
+由于 `{}` 本没有任何属性，因此，像上面那样给 `foo` 添加属性时就会报错。
 
 最好的解决方案就是在为变量赋值的同时，添加属性及其对应的值：
 ```
@@ -29,7 +30,8 @@ foo.bar = 123;
 foo.bas = 'Hello World';
 ```
 折中的解决方案
-当然，总是用 any 肯定是不好的，因为这样做其实是在想办法绕开 TypeScript 的类型检查。那么，折中的方案就是创建 interface，这样的好处在于：
+当然，总是用 any 肯定是不好的，因为这样做其实是在想办法绕开 TypeScript 的类型检查。
+那么，折中的方案就是创建 interface，这样的好处在于：
 
 方便撰写类型文档
 TypeScript 会参与类型检查，确保类型安全
@@ -103,7 +105,8 @@ interface Person {
 
 ### 3.  枚举类型
 当我们需要定义一组有共同特点的变量，可以使用枚举类型。
-比如我们要实现下面的页面，这个页面有两处地方要实现点击切换视图的效果，一个是包含Ad Creative，Images和Videos分类的Tab，一个是显示方式Grid还是table。点击不同的按钮，页面切换不同的效果。
+比如我们要实现下面的页面，这个页面有两处地方要实现点击切换视图的效果，一个是包含Ad Creative，Images和Videos分类的Tab，一个是显示方式Grid还是table。
+点击不同的按钮，页面切换不同的效果。
 > ![image.png](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-9a48948affd06ae0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 > ![image.png](https://hexo-blog.pek3b.qingstor.com/upload_images/71414-10545116200db60e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -132,7 +135,8 @@ export enum DisplayTab {
 ```
 
 ### 4.  使用泛型提高重用性
- 比如后台的API中返回的格式是规定的
+
+比如后台的API中返回的格式是规定的
 ```
 {
   success: true,

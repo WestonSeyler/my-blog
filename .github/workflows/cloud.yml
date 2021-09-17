@@ -10,10 +10,10 @@ on:
 env:
   CI: true
   NODE: 14.x
-  # google cloud kubernates cluser (GKE)
+  # google cloud kubernates cluster (GKE)
   PROJECT_ID: ivory-strategy-313903
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
-  GKE_ZONE: asia-east1-a  # Add your cluster zone here.
+  GKE_ZONE: asia-east2-c  # Add your cluster zone here.
   DEPLOYMENT_NAME: deployment-blog-vuepress # Add your deployment name here.
   IMAGE: finleyma/blog-vuepress
   IMAGE_TAG: $GITHUB_SHA
@@ -52,7 +52,7 @@ jobs:
       run: npm ci
 
     - name: Run build task
-      run: npm run build --if-present
+      run: yarn build
 
     - name: Build the Docker image
       run: docker build --file Dockerfile .
@@ -111,5 +111,6 @@ jobs:
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
       env:
         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # optional
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        # 获取频道地址 https://api.slack.com/apps/AA2A5EYBE/incoming-webhooks
+        SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}} # required
       if: always() # Pick up events even if the job fails or is canceled.

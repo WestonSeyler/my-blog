@@ -1,5 +1,39 @@
 module.exports = {
+  title: 'mafeifan 的技术博客',
+  port: '8099',
+  head: [
+    // ico
+    ["link", {rel: "icon", href: `/favicon.ico`}],
+    // meta
+    ["meta", {name: "robots", content: "all"}],
+    ["meta", {name: "author", content: "FinleyMa"}],
+    ["meta", {name: "description", content: "mafeifan 的技术博客"}],
+    ["meta", {name: "keywords", content: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"}],
+    ["meta", {name: "apple-mobile-web-app-capable", content: "yes"}]
+  ],
+  locales: {
+    "/": {
+      lang: "zh-CN",
+        title: "mafeifan 的技术博客",
+        description: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"
+    }
+  },
+  markdown: {
+    lineNumbers: true // 代码块显示行号
+  },
   plugins: {
+    '@vuepress/search': {
+      searchMaxSuggestions: 10
+    },
+    '@vssue/vuepress-plugin-vssue': {
+      // 设置 `platform` 而不是 `api`
+      platform: 'github',
+      // 其他的 Vssue 配置
+      owner: 'mafeifan',
+      repo: 'vue-press',
+      clientId: 'e424b739bd81e2a94d69',
+      clientSecret: '3af1dd0ab1bc289d671fbeeb5c30daa2410400ce ',
+    },
     // https://analytics.google.com/
     '@vuepress/google-analytics': {
       'ga': 'G-41D2WLZSSB' //替换成自己实际申请的ID
@@ -20,12 +54,6 @@ module.exports = {
       },
     },
   },
-  title: 'mafeifan 的技术博客',
-  description: '点滴记录',
-  port: '8099',
-  markdown: {
-    lineNumbers: true // 代码块显示行号
-  },
   themeConfig: {
     lastUpdated: '上次更新',
     activeHeaderLinks: true,
@@ -36,7 +64,7 @@ module.exports = {
     // sidebar: 'auto',
     nav: [
       {
-        text: 'DevOps',
+        text: 'CI/CD',
         items: [
           {text: 'Jenkins', link: '/DevOps/Jenkins/Jenkins2-学习系列1----使用Docker方式安装最新版Jenkins'},
           {text: 'Docker', link: '/DevOps/Docker/Docker-学习系列1--使用-Docker-快速实现多版本PHP切换'},
@@ -84,12 +112,11 @@ module.exports = {
           }],
       },
       {
-        text: 'Demo',
-        link: '/_DEMO/'
-      },
-      {
-        text: '友链',
-        link: '/Friend-links/'
+        text: 'Links',
+        items: [
+          {text: 'Links', link: '/Friend-links/'},
+          {text: 'Markdown', link: '/_DEMO/'},
+        ],
       },
       {
         text: 'Home', link: '/'
@@ -218,11 +245,17 @@ module.exports = {
       ],
 
       '/Frontend/JavaScript/': [
-        ['说下js中的bind', '说下JavaScript中的bind'],
+        ['ES6技巧总结', 'ES6技巧总结'],
         ['JavaScript中reduce的使用', 'JavaScript中reduce的使用'],
-        ['关于JS中的循环', '关于JS中的循环'],
         ['JavaScript中的事件相关', 'JavaScript中的事件相关'],
-        ['JS-面试总结-理论篇', 'JS-面试总结-理论篇']
+        ['说下js中的bind', '说下JavaScript中的bind'],
+        ['说说JSON和JSONP，也许你会豁然开朗', '说说JSON和JSONP，也许你会豁然开朗'],
+        ['解决setTimeout中的this指向问题', '解决setTimeout中的this指向问题'],
+        ['使用-StorageEvent-解决浏览器Tab数据同步问题', '使用StorageEvent解决浏览器标签页数据同步问题'],
+        ['关于JS中的循环', '关于JS中的循环'],
+        ['JS-面试总结-理论篇', 'JS-面试总结-理论篇'],
+        ['前端路由原理之 hash 模式和 history 模式', '前端路由原理之 hash 模式和 history 模式'],
+        ['Typescript-技巧，补充中', 'Typescript-技巧，补充中'],
       ],
 
       '/Frontend/GraphQL/': [

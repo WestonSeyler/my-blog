@@ -24,8 +24,8 @@ flower.bloom();  // 二秒钟后, 调用'declare'方法
 #### 解决办法：
 推荐用下面两种写法
 1.  将bind换成call,apply也会导致立即执行，延迟效果会失效
- window.setTimeout(this.declare.bind(this), 2000);
+`window.setTimeout(this.declare.bind(this), 2000);`
 2. 使用es6中的箭头函数，因为在箭头函数中this是固定的。
 // 箭头函数可以让setTimeout里面的this，绑定定义时所在的作用域，而不是指向运行时所在的作用域。
 // 参考：[箭头函数](http://es6.ruanyifeng.com/#docs/function#箭头函数)
- window.setTimeout(() => this.declare(), 2000);
+` `window.setTimeout(() => this.declare(), 2000);`
