@@ -1,9 +1,33 @@
 module.exports = {
+  title: 'mafeifan 的技术博客',
+  port: '8099',
+  head: [
+    // ico
+    ["link", {rel: "icon", href: `/favicon.ico`}],
+    // meta
+    ["meta", {name: "robots", content: "all"}],
+    ["meta", {name: "author", content: "FinleyMa"}],
+    ["meta", {name: "description", content: "mafeifan 的技术博客"}],
+    ["meta", {name: "keywords", content: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"}],
+    ["meta", {name: "apple-mobile-web-app-capable", content: "yes"}]
+  ],
+  locales: {
+    "/": {
+      lang: "zh-CN",
+        title: "mafeifan 的技术博客",
+        description: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"
+    }
+  },
+  markdown: {
+    lineNumbers: true // 代码块显示行号
+  },
   plugins: {
+    '@vuepress/search': {
+      searchMaxSuggestions: 10
+    },
     '@vssue/vuepress-plugin-vssue': {
       // 设置 `platform` 而不是 `api`
       platform: 'github',
-
       // 其他的 Vssue 配置
       owner: 'mafeifan',
       repo: 'vue-press',
@@ -30,12 +54,6 @@ module.exports = {
       },
     },
   },
-  title: 'mafeifan 的技术博客',
-  description: '点滴记录',
-  port: '8099',
-  markdown: {
-    lineNumbers: true // 代码块显示行号
-  },
   themeConfig: {
     lastUpdated: '上次更新',
     activeHeaderLinks: true,
@@ -46,7 +64,7 @@ module.exports = {
     // sidebar: 'auto',
     nav: [
       {
-        text: 'DevOps',
+        text: 'CI/CD',
         items: [
           {text: 'Jenkins', link: '/DevOps/Jenkins/Jenkins2-学习系列1----使用Docker方式安装最新版Jenkins'},
           {text: 'Docker', link: '/DevOps/Docker/Docker-学习系列1--使用-Docker-快速实现多版本PHP切换'},
@@ -94,12 +112,11 @@ module.exports = {
           }],
       },
       {
-        text: 'Demo',
-        link: '/_DEMO/'
-      },
-      {
-        text: '友链',
-        link: '/Friend-links/'
+        text: 'Links',
+        items: [
+          {text: 'Links', link: '/Friend-links/'},
+          {text: 'Markdown', link: '/_DEMO/'},
+        ],
       },
       {
         text: 'Home', link: '/'

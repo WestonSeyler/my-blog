@@ -30,7 +30,7 @@ arr2.push(4)
 
 例3
 
-```ecmascript 6
+```javascript
 let ab = { ...a, ...b };
 // 等同于
 let ab = Object.assign({}, a, b);

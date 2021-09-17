@@ -3,7 +3,7 @@ kubectl apply -f kubernates.yaml
 
 方法：https://docs.github.com/en/actions/guides/deploying-to-google-kubernetes-engine
 
-## 访问地址
+## K8s 访问地址
 34.92.239.32
 ## TODO
 
