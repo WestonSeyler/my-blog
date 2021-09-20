@@ -1,6 +1,7 @@
 module.exports = {
   title: 'mafeifan 的技术博客',
   port: '8099',
+  base:'./',
   head: [
     // ico
     ["link", {rel: "icon", href: `/favicon.ico`}],
