@@ -1,25 +1,14 @@
-# hello world!
-
-
-这是记录的是我的技术博客，你看到的页面是基于[vuepress](https://v1.vuepress.vuejs.org/zh/)生成的。源码是托管在了[Github](https://github.com/mafeifan/vue-press)
-
-[^_^]: #(有些内容也会同步更新到[掘金](https://juejin.im/user/59b9ce1a5188256c6c3e15b9)，[简书](https://www.jianshu.com/u/95c95b65f516)等平台)
-
-
-欢迎Star！
-
-我的博客即将同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=v7er73kcqd35
-
-觉得有收获欢迎打赏，您的支持是我写作的动力！
-
-如有反馈，请到这里[留言](https://support.qq.com/product/351311)
-
-<img src="https://hexo-blog.pek3b.qingstor.com/images/alipay-dashang.png" width="200" height="200">
-
-
-![CI](https://github.com/mafeifan/vue-press/workflows/CI/badge.svg?branch=master)
-
-
-<p>备案号:<a href="http://www.miitbeian.gov.cn/">豫ICP备18017060号-1</a></p>
-
-<Vssue title="请添加评论" />
+---
+home: true
+heroImage: /logo.jpg
+actionText: 快速上手 →
+actionLink: /DevOps/Jenkins/
+features:
+  - title: 简洁至上
+    details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
+  - title: Vue驱动
+    details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
+  - title: 高性能
+    details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+footer: MIT Licensed | Copyright © 2018-present Evan You
+---

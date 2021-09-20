@@ -1,21 +1,21 @@
 module.exports = {
-  title: 'mafeifan 的技术博客',
+  title: 'wjn 的技术博客',
   port: '8099',
-  base:'./',
+  base:'my-blog/dist',
   head: [
     // ico
     ["link", {rel: "icon", href: `/favicon.ico`}],
     // meta
     ["meta", {name: "robots", content: "all"}],
     ["meta", {name: "author", content: "FinleyMa"}],
-    ["meta", {name: "description", content: "mafeifan 的技术博客"}],
+    ["meta", {name: "description", content: "wjn 的技术博客"}],
     ["meta", {name: "keywords", content: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"}],
     ["meta", {name: "apple-mobile-web-app-capable", content: "yes"}]
   ],
   locales: {
     "/": {
       lang: "zh-CN",
-        title: "mafeifan 的技术博客",
+        title: "wjn 的技术博客",
         description: "Laravel,Laravel教程,Jenkins系列教程,Docker系列教程,开发基础"
     }
   },
@@ -375,15 +375,15 @@ module.exports = {
       // ],
 
       // fallback
-      '/': [
-        '',
-        ['/DevOps/Jenkins/', 'Jenkins2系列'],
-        // ['/Javascript-animate/', 'Javascript动画'],
-        ['/DevOps/Docker/', 'Docker系列'],
-        ['/Frontend/HTML5/', 'HTML5&CSS3'],
-        ['/Backend/Laravel/', 'Laravel系列'],
-        ['/Backend/Database/MQTT/', 'MQTT系列'],
-      ]
+      // '': [
+      //   '',
+      //   // ['/DevOps/Jenkins/', 'Jenkins2系列'],
+      //   // // ['/Javascript-animate/', 'Javascript动画'],
+      //   // ['/DevOps/Docker/', 'Docker系列'],
+      //   // ['/Frontend/HTML5/', 'HTML5&CSS3'],
+      //   // ['/Backend/Laravel/', 'Laravel系列'],
+      //   // ['/Backend/Database/MQTT/', 'MQTT系列'],
+      // ]
     }
   }
 };
