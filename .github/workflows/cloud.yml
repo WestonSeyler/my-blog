@@ -58,7 +58,7 @@ jobs:
       run: docker build --file Dockerfile .
 
     - name: publish docker image to dockerhub
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         name: ${{ env.IMAGE }}
         username: finleyma
